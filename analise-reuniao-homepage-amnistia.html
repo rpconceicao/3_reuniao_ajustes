@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise da Reunião — Homepage / Key Visual — 15 jul. 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1b1d1f;
+    --paper:#faf8f4;
+    --paper-2:#f1eee7;
+    --dark:#14161a;
+    --dark-2:#1f2226;
+    --muted:#6b6f76;
+    --muted-light:#9a9ea5;
+    --accent:#b9863a;
+    --accent-dim:#e8d3ac;
+    --red:#a8442f;
+    --red-bg:#f7e6e1;
+    --amber:#93691f;
+    --amber-bg:#f5ecd8;
+    --green:#3f6b4c;
+    --green-bg:#e2ede3;
+    --line:#e1ddd3;
+    --line-dark:#33363b;
+    --radius:10px;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4, .eyebrow, .mono, nav, .badge, table th{
+    font-family:'Space Grotesk', 'IBM Plex Mono', sans-serif;
+  }
+  a{color:inherit;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 460px at 85% -10%, rgba(185,134,58,0.16), transparent 60%),
+      var(--dark);
+    color:#f4f1ea;
+    padding:76px 32px 56px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-6%;
+    top:-18%;
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    border:1px solid rgba(244,241,234,0.08);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:2%;
+    top:8%;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    border:1px solid rgba(244,241,234,0.06);
+  }
+  .hero-inner{max-width:var(--maxw); margin:0 auto; position:relative;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent-dim);
+    font-weight:600;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(30px,4.4vw,44px);
+    line-height:1.12;
+    margin:0 0 18px;
+    font-weight:700;
+    max-width:14ch;
+    color:#fbfaf7;
+  }
+  .hero p.lede{
+    font-family:'Source Serif 4', serif;
+    font-size:18px;
+    color:#cfcbc0;
+    max-width:56ch;
+    margin:0 0 30px;
+  }
+  .meta-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+    border-top:1px solid rgba(244,241,234,0.14);
+    padding-top:24px;
+    margin-top:8px;
+  }
+  .meta-grid dt{
+    font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--muted-light); margin-bottom:6px; font-weight:600;
+  }
+  .meta-grid dd{margin:0; font-size:14.5px; color:#e7e4dc; font-family:'Source Serif 4',serif;}
+
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    max-width:1220px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:250px minmax(0,1fr);
+    gap:56px;
+    padding:48px 32px 100px;
+  }
+  nav.toc{
+    position:sticky;
+    top:24px;
+    align-self:start;
+    max-height:calc(100vh - 48px);
+    overflow-y:auto;
+    padding-right:8px;
+  }
+  nav.toc::-webkit-scrollbar{width:6px;}
+  nav.toc::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px;}
+  nav.toc .toc-label{
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; margin-bottom:14px; display:block;
+  }
+  nav.toc ul{list-style:none; margin:0 0 22px; padding:0;}
+  nav.toc li{margin-bottom:2px;}
+  nav.toc a{
+    display:block;
+    font-size:13.5px;
+    color:var(--muted);
+    text-decoration:none;
+    padding:6px 10px;
+    border-radius:7px;
+    border-left:2px solid transparent;
+    transition:all .15s ease;
+  }
+  nav.toc a:hover{background:var(--paper-2); color:var(--ink);}
+  nav.toc a.active{
+    color:var(--ink); font-weight:600;
+    border-left-color:var(--accent);
+    background:var(--paper-2);
+  }
+  nav.toc .toc-divergent a{color:var(--red);}
+  nav.toc .toc-divergent a.active{border-left-color:var(--red);}
+
+  main.content section{margin-bottom:56px;}
+  main.content section:target{scroll-margin-top:20px;}
+
+  .block-head{
+    display:flex; align-items:baseline; gap:16px;
+    margin-bottom:14px;
+  }
+  .block-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:14px;
+    color:var(--muted-light);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:2px 8px;
+    white-space:nowrap;
+  }
+  h2{
+    font-size:22px;
+    font-weight:600;
+    margin:0;
+    line-height:1.3;
+  }
+  h3{font-size:16.5px; font-weight:600; margin:26px 0 10px;}
+  .section-intro{
+    font-size:16px; color:var(--muted); max-width:64ch; margin:0 0 18px;
+  }
+
+  p{margin:0 0 12px;}
+  ul, ol{padding-left:22px; margin:0 0 14px;}
+  li{margin-bottom:6px;}
+  strong{font-weight:600;}
+
+  .field{
+    display:grid;
+    grid-template-columns:150px minmax(0,1fr);
+    gap:14px;
+    padding:12px 0;
+    border-top:1px solid var(--line);
+  }
+  .field:first-of-type{border-top:none; padding-top:0;}
+  .field dt{
+    font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .field dd{margin:0;}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+
+  .status{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; font-weight:600;
+    padding:4px 10px 4px 8px;
+    border-radius:999px;
+    margin:2px 6px 10px 0;
+  }
+  .status::before{content:""; width:7px; height:7px; border-radius:50%;}
+  .status.closed{background:var(--green-bg); color:var(--green);}
+  .status.closed::before{background:var(--green);}
+  .status.low{background:var(--green-bg); color:var(--green);}
+  .status.low::before{background:var(--green);}
+  .status.medium{background:var(--amber-bg); color:var(--amber);}
+  .status.medium::before{background:var(--amber);}
+  .status.high{background:var(--red-bg); color:var(--red);}
+  .status.high::before{background:var(--red);}
+
+  .callout{
+    border-radius:var(--radius);
+    padding:20px 22px;
+    margin:0 0 20px;
+    border:1px solid var(--line);
+  }
+  .callout.warn{background:var(--red-bg); border-color:#e6c3ba;}
+  .callout.note{background:var(--paper-2); border-color:var(--line);}
+  .callout h4{margin:0 0 8px; font-size:14px; text-transform:uppercase; letter-spacing:.06em;}
+  .callout.warn h4{color:var(--red);}
+  .callout p, .callout ul{font-size:15.5px;}
+  .callout p:last-child, .callout ul:last-child{margin-bottom:0;}
+
+  .divergence{
+    border:1px solid var(--line);
+    border-left:4px solid var(--red);
+    border-radius:8px;
+    padding:20px 22px;
+    margin-bottom:20px;
+    background:#fff;
+  }
+  .divergence.simplif{border-left-color:var(--amber);}
+  .divergence h3{margin-top:0;}
+  .tag-pdf, .tag-email, .tag-real{
+    display:block; font-size:14.5px; margin-bottom:8px;
+  }
+  .tag-pdf b, .tag-email b, .tag-real b{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:.05em; margin-right:6px;
+  }
+  .tag-real{background:var(--paper-2); border-radius:6px; padding:10px 12px; margin-top:10px;}
+
+  table{
+    width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:14.5px;
+    background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  }
+  th,td{
+    text-align:left; padding:10px 12px; border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  th{
+    background:var(--paper-2); font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.06em; color:var(--muted); font-weight:600;
+  }
+  tr:last-child td{border-bottom:none;}
+  td.subtask{font-family:'Source Serif 4',serif;}
+
+  .task-group{margin-bottom:34px;}
+  .task-group h3{
+    display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px;
+    font-size:16px; margin-bottom:4px;
+  }
+  .task-owner{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);
+    font-weight:500; text-transform:none; letter-spacing:0;
+  }
+
+  .divider{
+    border:none; border-top:1px solid var(--line); margin:44px 0;
+  }
+
+  .summary-cols{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px; margin:18px 0 8px;
+  }
+  .summary-col{
+    border-radius:var(--radius); padding:18px 20px; border:1px solid var(--line);
+  }
+  .summary-col.closed{background:var(--green-bg); border-color:#cfe0d2;}
+  .summary-col.medium{background:var(--amber-bg); border-color:#e6d9b6;}
+  .summary-col.high{background:var(--red-bg); border-color:#e6c3ba;}
+  .summary-col h4{margin:0 0 10px; font-size:13.5px; text-transform:uppercase; letter-spacing:.05em;}
+  .summary-col ul{margin:0; padding-left:18px; font-size:14.5px;}
+  .summary-col li{margin-bottom:6px;}
+
+  footer.doc-footer{
+    max-width:var(--maxw); margin:0 auto; padding:0 32px 60px;
+    font-size:13.5px; color:var(--muted); font-style:italic;
+  }
+
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr; padding:32px 20px 80px;}
+    nav.toc{position:static; max-height:none; margin-bottom:8px; border:1px solid var(--line); border-radius:10px; padding:16px;}
+    .hero{padding:56px 20px 40px;}
+    .field{grid-template-columns:1fr; gap:4px;}
+  }
+  @media print{
+    nav.toc{display:none;}
+    .layout{display:block;}
+    .hero{background:#fff; color:#000;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Documento interno · Loba</span>
+    <h1>Análise da Reunião de Revisão da Homepage</h1>
+    <p class="lede">Amnistia Internacional Portugal — Homepage / Key Visual, 3ª ronda de ajustes. Leitura bloco a bloco da transcrição, cruzada com o resumo automático e o rascunho de e-mail/plano de ação gerado automaticamente no final da reunião (ainda por enviar), para servir de base à estimativa de esforço da próxima entrega.</p>
+    <dl class="meta-grid">
+      <div><dt>Data da reunião</dt><dd>15 de julho de 2026</dd></div>
+      <div><dt>Equipa Loba</dt><dd>Rui Conceição, João Fins, Emídio Vidal, Fábio Godinho, Pedro Gama</dd></div>
+      <div><dt>Amnistia Internacional</dt><dd>Miguel Marujo, Paulo Tavares, Sílvia Caniça</dd></div>
+      <div><dt>Ausentes (convidados)</dt><dd>Joana Resende, Manuel Pinhão</dd></div>
+    </dl>
+  </div>
+</header>
+
+<div class="layout">
+
+<nav class="toc">
+  <span class="toc-label">Divergências</span>
+  <ul class="toc-divergent">
+    <li><a href="#divergencias">⚠️ Resumos vs. transcrição</a></li>
+  </ul>
+
+  <span class="toc-label">Blocos da homepage (1–21)</span>
+  <ul>
+    <li><a href="#b1">01 · Iconografia geral</a></li>
+    <li><a href="#b2">02 · Defendemos pessoas</a></li>
+    <li><a href="#b3">03 · Big numbers</a></li>
+    <li><a href="#b4">04 · DUDH / Transparência</a></li>
+    <li><a href="#b5">05 · Descubra mais</a></li>
+    <li><a href="#b6">06 · Humanização</a></li>
+    <li><a href="#b7">07 · Diversidade imagens</a></li>
+    <li><a href="#b8">08 · Proporção 60/40</a></li>
+    <li><a href="#b9">09 · Cards ação/petição</a></li>
+    <li><a href="#b10">10 · Botões — contraste</a></li>
+    <li><a href="#b11">11 · Nomenclatura CTAs</a></li>
+    <li><a href="#b12">12 · Card 100% clicável</a></li>
+    <li><a href="#b13">13 · Mobilização</a></li>
+    <li><a href="#b14">14 · Atualidade / Notícias</a></li>
+    <li><a href="#b15">15 · Newsletter</a></li>
+    <li><a href="#b16">16 · Áreas de Atuação</a></li>
+    <li><a href="#b17">17 · Eventos / Calendário</a></li>
+    <li><a href="#b18">18 · CTAs finais + Footer</a></li>
+    <li><a href="#b19">19 · Botões flutuantes</a></li>
+    <li><a href="#b20">20 · Página Projetos</a></li>
+    <li><a href="#b21">21 · Migração vs. revisão</a></li>
+  </ul>
+
+  <span class="toc-label">Síntese</span>
+  <ul>
+    <li><a href="#resumo">Fechado vs. em aberto</a></li>
+    <li><a href="#prazo">Fatores de prazo</a></li>
+    <li><a href="#plano">Plano de ação</a></li>
+    <li><a href="#recomendacao">Recomendação prática</a></li>
+  </ul>
+</nav>
+
+<main class="content">
+
+  <section id="divergencias">
+
+    <div class="divergence">
+      <span class="status high">Contradição</span>
+      <h3>Limitador de caracteres — "implementar" vs. "sem consenso técnico"</h3>
+      <span class="tag-pdf"><b>PDF / Rascunho e-mail</b>"Implementar limitador de caracteres nos títulos e descrições dos cards" — apresentado como decisão fechada.</span>
+      <div class="tag-real">
+        <b style="font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.05em;">Reunião ⟶</b>
+        Não houve consenso sobre limitar tecnicamente os caracteres.
+      </div>
+      <ul style="margin-top:12px;">
+        <li>João Fins discorda de limitar — prefere alinhar os cards pela maior altura.</li>
+        <li>Emídio reforça que um limitador rígido não resolve nada por causa do responsive (o mesmo texto muda de nº de linhas consoante a resolução).</li>
+        <li>Miguel reconhece que um limite rígido é arriscado para textos jurídicos/institucionais — a sugestão real foi um <strong>aviso/indicador visual</strong>, não um corte automático.</li>
+      </ul>
+      <p>Única solução aceite por todos: <strong>(a)</strong> alinhar sempre pela altura do card maior, e <strong>(b)</strong> resolver à parte o caso do card de petição (número + barra de progresso).</p>
+    </div>
+
+    <div class="divergence simplif">
+      <span class="status medium">Simplificação 1</span>
+      <h3>Nomenclatura dos botões</h3>
+      <p>O PDF resume como termo único genérico ("Saiba mais"). Na realidade ficaram <strong>três termos diferentes</strong> consoante o tipo de conteúdo: <strong>"Ler"</strong> (notícias/artigos), <strong>"Saber mais"</strong> (páginas), <strong>"Aceder"</strong> (recursos/ferramentas).</p>
+    </div>
+
+    <div class="divergence simplif">
+      <span class="status medium">Simplificação 2</span>
+      <h3>Calendário "será redesenhado para ser menos intrusivo"</h3>
+      <p>Direção correta, mas <strong>sem solução escolhida</strong> — a própria Loba assumiu precisar de novo brainstorm. É a tarefa com maior grau de incerteza de todo o plano.</p>
+    </div>
+
+    <div class="divergence simplif">
+      <span class="status medium">Simplificação 3</span>
+      <h3>"Padronizar CTAs"</h3>
+      <p>Esconde uma decisão estratégica pendente: <strong>o peso visual do botão "Ler"</strong> nas notícias (destaque tipo botão preto vs. discreto). Fábio ficou de validar internamente com Miguel/Sílvia/Paulo.</p>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+
+  <section id="b1">
+    <div class="block-head"><span class="block-num">01</span><h2>Iconografia geral (todos os blocos)</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Conflito visual entre iconografia e "big numbers"; sensação de sobrecarga num dos blocos. Paulo acrescenta: ícones parecem "ornamento" em vez de terem função de leitura; falta regra de proporção visual entre ícones vizinhos (alguns parecem maiores/menores mesmo com o mesmo tamanho técnico 56×56px).</dd></div>
+      <div class="field"><dt>Esclarecimento</dt><dd>João confirma: todos os ícones têm o mesmo tamanho técnico, mesma border, mesmo peso — a diferença percebida vem do desenho de cada ícone.</dd></div>
+      <div class="field"><dt>Decisão</dt><dd>Não fechada — reconhecido que certas combinações lado a lado não funcionam e devem ser trocadas.</dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status medium">Média</span>Definir regra prática de curadoria/ajuste visual de ícones para combinações lado a lado.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b2">
+    <div class="block-head"><span class="block-num">02</span><h2>Bloco "Defendemos pessoas" / "Investigamos"</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Ícone de "polícia" não é adequado semanticamente.</dd></div>
+      <div class="field"><dt>Pedido</dt><dd>Sugestões de ícones alternativos por parte da Amnistia.</dd></div>
+      <div class="field"><dt>Ação</dt><dd><span class="status low">Baixa</span>Loba a aguardar sugestões de iconografia da Amnistia (ou propor alternativas).</dd></div>
+    </dl>
+  </section>
+
+  <section id="b3">
+    <div class="block-head"><span class="block-num">03</span><h2>Bloco "Big numbers" (ex.: "47")</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Organização pouco lida; espaço negro em excesso à esquerda/direita; número mal arrumado; conflito de alinhamento com os cards seguintes.</dd></div>
+      <div class="field"><dt>Contexto</dt><dd>Este era o <strong>layout original</strong> (mais organizado), alterado a pedido da própria Amnistia numa iteração anterior — pede-se agora reverter/ajustar de novo.</dd></div>
+      <div class="field"><dt>Decisão</dt><dd>Loba vai rever a arrumação (imagem encostada a um lado, números mais bem arrumados).</dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status medium">Média</span>Nova proposta de layout — retrabalho de design, não ajuste pontual.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b4">
+    <div class="block-head"><span class="block-num">04</span><h2>Blocos "Declaração Universal dos Direitos Humanos" e "Independência e Transparência"</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Ícones pouco integrados com o texto; leitura confusa.</dd></div>
+      <div class="field"><dt>Alternativas</dt><dd>
+        <ol>
+          <li>Ícones mais integrados no layout (não resolvido como).</li>
+          <li>Substituir ícone por uma imagem/"tira" (ex. com a própria Declaração Universal escrita) como elemento gráfico de apoio.</li>
+        </ol>
+      </dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status high">Alta</span>Decisão de direção de design + produção de novo elemento gráfico — envolve pesquisa de imagem e novo layout.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b5">
+    <div class="block-head"><span class="block-num">05</span><h2>Bloco "Descubra mais" (Revista Agir, Investigações + 4 tópicos)</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Mesma leitura confusa dos ícones "desgarrados" do texto/imagem.</dd></div>
+      <div class="field"><dt>Sugestão</dt><dd>Imagens em fade-out como fundo de cada tópico (ex. capa da última revista Agir; imagem relacionada com investigações; imagens nos restantes 4 pontos).</dd></div>
+      <div class="field"><dt>Estado</dt><dd>Sugestão em aberto — Loba propõe design, cliente disponibiliza imagens/orientação por tópico.</dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status medium">Média</span>Curadoria/produção de imagens por tópico + novo layout com fade.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b6">
+    <div class="block-head"><span class="block-num">06</span><h2>Humanização geral do site</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd><em>(Paulo, forte)</em> O site "continua muito frio"; falta representar pessoas, rostos, humanidade — o ponto mais destacado pelo cliente ("Amnistia são pessoas a tratar de pessoas").</dd></div>
+      <div class="field"><dt>Pedido transversal</dt><dd>Rever presença de imagens humanas em vários blocos (big numbers, descubra mais, CTAs finais) — não é um bloco isolado.</dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status high">Alta</span>Tema transversal — decisão de art direction a costurar em vários blocos, antes de mexer em cada um isoladamente.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b7">
+    <div class="block-head"><span class="block-num">07</span><h2>Diversidade nas imagens (3 cards de pessoas recortadas)</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>As 3 imagens atuais mostram apenas homens; falta diversidade de género, raça e idade.</dd></div>
+      <div class="field"><dt>Decisão</dt><dd>Ajustar seleção de imagens para refletir diversidade.</dd></div>
+      <div class="field"><dt>Nota</dt><dd>Protótipo — imagens finais podem vir do banco de imagens global da Amnistia Internacional.</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status low">Baixa/Média</span>Troca de imagens, depende de banco de imagens fornecido pelo cliente.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b8">
+    <div class="block-head"><span class="block-num">08</span><h2>Sistema de proporção 60/40 (hero)</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Aprovado sem reservas. Loba já ajustou de 33% para 40%.</dd></div>
+      <div class="field"><dt>Estado</dt><dd><span class="status closed">Fechado</span></dd></div>
+    </dl>
+  </section>
+
+  <section id="b9">
+    <div class="block-head"><span class="block-num">09</span><h2>Cards — Ações Urgentes / Petições</h2></div>
+    <p class="section-intro"><strong>O bloco com mais discussão e sem consenso fechado</strong> — vai exigir mais tempo de exploração.</p>
+    <dl>
+      <div class="field"><dt>Problema</dt><dd>Cards com título mais curto/mais longo ficam com alturas diferentes; botões desalinhados; cards de petição (com barra de progresso e número, ex. "84.231") têm um elemento a mais que desequilibra o alinhamento face aos cards de ação urgente simples.</dd></div>
+      <div class="field"><dt>Posições divergentes</dt><dd>
+        <ul>
+          <li><strong>João Fins:</strong> alinhar todos pela maior altura; contra limitar caracteres.</li>
+          <li><strong>Miguel:</strong> limitar/alertar nº de caracteres (aviso tipo "Twitter"), reduzir/reposicionar o número da petição.</li>
+          <li><strong>Emídio:</strong> concorda em alinhar pela maior altura; contra variar tamanho da fonte por card; nota que limitar caracteres não resolve por causa do responsive.</li>
+          <li><strong>Fábio:</strong> propõe reduzir fonte do número (testado, não resolve sozinho) ou escondê-lo por defeito, mostrando só em hover/over (por validar, sobretudo em mobile).</li>
+          <li><strong>Miguel/Sílvia:</strong> aceitam compromisso, mas querem alinhamento pela altura do card mais alto e resolução específica para a petição.</li>
+        </ul>
+      </dd></div>
+      <div class="field"><dt>Decisão final</dt><dd><strong>Não fechada.</strong> Acordado: regra de alinhamento pela maior altura transversal a todos os cards; solução específica para a petição ainda por definir; diretriz interna (Amnistia) de manter títulos idealmente em 3 linhas — a validar.</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status high">Alta</span>Problema de sistema de componente (design system) — exige prototipar 2–3 variações antes de validar com cliente.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b10">
+    <div class="block-head"><span class="block-num">10</span><h2>Botões — contraste sobre fundo claro/escuro</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Botão amarelo parece mais pequeno sobre fundo branco do que sobre fundo escuro.</dd></div>
+      <div class="field"><dt>Esclarecimento</dt><dd>É ilusão ótica — mesmo tamanho; na v1 havia uma borda preta a contornar o botão que ajudava a resolver este efeito, e foi removida.</dd></div>
+      <div class="field"><dt>Em aberto</dt><dd><span class="status medium">Média</span>Decidir se se reintroduz a borda/contraste ou outra solução consoante o fundo.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b11">
+    <div class="block-head"><span class="block-num">11</span><h2>Nomenclatura e regras de botões (CTAs)</h2></div>
+    <dl>
+      <div class="field"><dt>Sugestão aceite</dt><dd>"Ler" → notícias/artigos · "Saber mais" → páginas · "Aceder" → recursos/ferramentas.</dd></div>
+      <div class="field"><dt>Pedido adicional</dt><dd>Mesmas cores e mesmo tamanho para botões do mesmo tipo/peso em todo o site.</dd></div>
+      <div class="field"><dt>Estado</dt><dd>Conceito aceite; falta consolidar guia de botões (hierarquia primária/secundária).</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status medium">Média</span>Documento de regras + revisão de todos os CTAs existentes no protótipo.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b12">
+    <div class="block-head"><span class="block-num">12</span><h2>Card 100% clicável</h2></div>
+    <dl>
+      <div class="field"><dt>Pedido</dt><dd>Toda a área do card (imagem + título) deve ser clicável, não só o botão.</dd></div>
+      <div class="field"><dt>Resposta</dt><dd>Já estava previsto (como na v1); nesta fase de fecho de pontos os "overs" ainda não foram implementados no protótipo estático.</dd></div>
+      <div class="field"><dt>Estado</dt><dd><span class="status closed">Fechado</span> — comportamento de interação a implementar em desenvolvimento.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b13">
+    <div class="block-head"><span class="block-num">13</span><h2>Secção "Mobilização" (Participa)</h2></div>
+    <dl>
+      <div class="field"><dt>Aprovado</dt><dd>Aumento da imagem (60/40) · aumento do corpo de letra do título para 32px · padding de 16px para 24px.</dd></div>
+      <div class="field"><dt>Estado</dt><dd><span class="status closed">Fechado</span>, sem mais ações.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b14">
+    <div class="block-head"><span class="block-num">14</span><h2>Secção "Atualidade / Notícias"</h2></div>
+    <ol>
+      <li><strong>Redundância de texto:</strong> antetítulo "Atualidade" + título "Notícias e Atualidade" — repetição a corrigir.</li>
+      <li><strong>Botão "Ler" pouco destacado</strong> — discussão sobre ganhar mais peso visual (botão preto) ou manter-se discreto. Miguel defende que as notícias são um canal importante. <em>Posição não totalmente resolvida</em>, Fábio vai validar internamente.</li>
+      <li><strong>Cor do texto da tag</strong> não passa em critérios de acessibilidade de contraste — Loba precisa validar com Paulo a paleta de cores enviada.</li>
+      <li><strong>Limite de caracteres do título</strong> — sugestão de 4 linhas como referência, com indicador visual em vez de corte rígido.</li>
+      <li><strong>Manter ou remover a data</strong> — Miguel sugeriu remover, Rui defendeu manter. <strong>Decisão: manter a data.</strong></li>
+      <li><strong>Texto do botão "Ver história"</strong> → mudar para termo mais genérico (ex. "Saiba mais"), nem todo o conteúdo é uma "história".</li>
+    </ol>
+    <p><span class="status high">Alta (combinado)</span> Envolve copy, paleta de cores acessível, e decisão estratégica de hierarquia de CTA ainda pendente.</p>
+  </section>
+
+  <section id="b15">
+    <div class="block-head"><span class="block-num">15</span><h2>Bloco Newsletter</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Sem posição fixa — pode ser movido para qualquer parte da página.</dd></div>
+      <div class="field"><dt>Estado</dt><dd>Sem alterações de design pedidas; só posicionamento a decidir mais tarde.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b16">
+    <div class="block-head"><span class="block-num">16</span><h2>Bloco "Áreas de Atuação" (4 cards temáticos)</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Bem avaliado — "cards muito equilibrados", boa organização.</dd></div>
+      <div class="field"><dt>Pedidos</dt><dd>Trocar imagem "pessoas em movimento"; imagens de cada tema ainda são placeholders (imagens finais a fornecer, possivelmente do banco de imagens global).</dd></div>
+      <div class="field"><dt>SVG vs. PNG</dt><dd>Rui propôs SVG para o cliente trocar imagem livremente em backoffice e adaptar a diferentes resoluções; Paulo alertou que depende do backoffice (há conteúdos institucionais fixos no site atual). <strong>Decisão:</strong> avançar com design primeiro, requisito técnico a validar com programação.</dd></div>
+      <div class="field"><dt>Confirmação geral</dt><dd>Todo o conteúdo (texto e imagem) editável em backoffice; blocos reutilizáveis noutras páginas.</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status low">Baixa</span> troca de imagens + definição técnica de formato a comunicar à equipa dev.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b17">
+    <div class="block-head"><span class="block-num">17</span><h2>Bloco "Eventos / Calendário"</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback forte</dt><dd><em>(Miguel)</em> O calendário mensal atual é demasiado grande/dominante face à frequência real de eventos (irregular); sensação de site desatualizado quando aparece vazio.</dd></div>
+      <div class="field"><dt>Ideias sem solução fechada</dt><dd>
+        <ul>
+          <li>Mostrar só a semana atual em vez do mês completo (Fábio, dias em formato "card").</li>
+          <li>Pedro: comportamento dinâmico — secção oculta se não houver eventos; só as linhas necessárias, com limite máximo.</li>
+          <li>Preocupação: uma única linha também pode parecer pouco relevante.</li>
+          <li>Versão alternativa já testada noutro projeto — não considerada adequada ("tipo Excel").</li>
+        </ul>
+      </dd></div>
+      <div class="field"><dt>Decisão</dt><dd>Nenhuma solução aprovada — novo brainstorm antes da próxima entrega.</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status high">Alta</span> — único bloco onde a Loba assume explicitamente precisar de tempo de exploração adicional; redefinição do componente, não um ajuste.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b18">
+    <div class="block-head"><span class="block-num">18</span><h2>CTAs finais ("Participe na defesa dos direitos") + Footer</h2></div>
+    <dl>
+      <div class="field"><dt>Feedback</dt><dd>Aplicar aqui também a diretriz de humanização (rostos/pessoas) referida no bloco 6.</dd></div>
+      <div class="field"><dt>Estado</dt><dd>Sem notas específicas adicionais — rever como parte do princípio geral de humanização.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b19">
+    <div class="block-head"><span class="block-num">19</span><h2>Botões flutuantes (Doar / Ação Urgente / Voluntariado)</h2></div>
+    <dl>
+      <div class="field"><dt>Contexto</dt><dd>Descartado na fase de wireframes, reapareceu num e-mail recente da equipa (possivelmente pedido da Joana).</dd></div>
+      <div class="field"><dt>Argumentos</dt><dd>Loba: botão Doar já sempre visível (menu sticky + footer), duplicar criaria ruído. Paulo trouxe referência de ~2 anos atrás de outras Amnistias com bons resultados, mas reconhece que o contexto mudou (menus sticky generalizados agora). Fábio concorda que é redundante.</dd></div>
+      <div class="field"><dt>Decisão</dt><dd><strong>Manter fora do design nesta fase</strong> — só avançar com pedido explícito e justificado de quem levantou o tema.</dd></div>
+      <div class="field"><dt>Estado</dt><dd><span class="status closed">Fechado</span> — sem trabalho de design adicional agora.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b20">
+    <div class="block-head"><span class="block-num">20</span><h2>Página "Projetos" (Face to Face, Voice to Voice, Door to Door)</h2></div>
+    <dl>
+      <div class="field"><dt>Contexto</dt><dd>Cliente enviou documento a sugerir página autónoma; nos wireframes originais este conteúdo estava integrado na página "Trabalhar na Amnistia/Colaboração".</dd></div>
+      <div class="field"><dt>Decisão</dt><dd>Rui vai analisar se pode ser montada com blocos já existentes e enviará proposta por e-mail (incluindo se entra no menu principal).</dd></div>
+      <div class="field"><dt>Esforço</dt><dd><span class="status medium">A definir</span> — depende de decisão de arquitetura de informação, não é tarefa de UI isolada.</dd></div>
+    </dl>
+  </section>
+
+  <section id="b21">
+    <div class="block-head"><span class="block-num">21</span><h2>Migração vs. revisão de conteúdos</h2></div>
+    <dl>
+      <div class="field"><dt>Distinção</dt><dd><strong>Migração</strong> = transferir conteúdo estruturado do site atual para o novo, sem alterações (programação/import). <strong>Revisão</strong> = validar o proposto nos wireframes e no documento do cliente (retrabalho de copy/estrutura).</dd></div>
+      <div class="field"><dt>Standby</dt><dd>Formulários e área pessoal/reservada — dependem de integração com Salesforce, tema tratado à parte.</dd></div>
+      <div class="field"><dt>Ação</dt><dd>Rui vai fazer levantamento comparativo (site atual × wireframes × documento recebido) e partilhar por e-mail/Excel.</dd></div>
+    </dl>
+  </section>
+
+  <hr class="divider">
+
+  <section id="resumo">
+    <h2>Resumo — Blocos fechados vs. em aberto</h2>
+    <div class="summary-cols">
+      <div class="summary-col closed">
+        <h4>✅ Fechados</h4>
+        <ul>
+          <li>Proporção 60/40 do hero</li>
+          <li>Imagem, letra (32px) e padding (24px) na secção Mobilização</li>
+          <li>Card 100% clicável (tarefa de dev)</li>
+          <li>Manter a data nas notícias</li>
+          <li>Botões flutuantes — não avançar</li>
+        </ul>
+      </div>
+      <div class="summary-col medium">
+        <h4>🟡 Ajustes diretos (baixo-médio)</h4>
+        <ul>
+          <li>Troca de ícones específicos (polícia, etc.)</li>
+          <li>Diversidade nas imagens dos 3 homens recortados</li>
+          <li>Troca da imagem "pessoas em movimento"</li>
+          <li>Corrigir redundância de copy</li>
+          <li>Mudar texto do botão "Ver história"</li>
+          <li>Reposicionamento do bloco Newsletter</li>
+        </ul>
+      </div>
+      <div class="summary-col high">
+        <h4>🔴 Em aberto (médio-alto)</h4>
+        <ul>
+          <li>Sistema de cards (ação urgente/petições/notícias)</li>
+          <li>Bloco de Eventos/Calendário</li>
+          <li>Humanização geral do site</li>
+          <li>Paleta de cores acessível</li>
+          <li>Hierarquia de CTAs em "Notícias"</li>
+          <li>Ícones vs. imagens (blocos 4 e 5)</li>
+          <li>Página "Projetos"</li>
+          <li>Levantamento migração/revisão (+ Salesforce em standby)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="prazo">
+    <h2>Fatores que condicionam o prazo</h2>
+    <ul>
+      <li><strong>João Fins</strong> vai estar de férias já na próxima semana → janela curta para fechar a próxima entrega antes disso.</li>
+      <li><strong>Miguel Marujo</strong> vai de férias dia 22 → entrega e revisão seguinte devem considerar esta ausência (incluir Joana Resende em CC para continuidade).</li>
+      <li>Rui vai enviar estimativa de data de entrega assim que confirmar disponibilidade de produção do João Fins.</li>
+      <li>Os pontos 🔴 devem entrar na estimativa como <strong>exploração de design</strong> — merecem buffer de tempo maior do que os ajustes diretos.</li>
+    </ul>
+  </section>
+
+  <section id="plano">
+    <h2>Plano de ação consolidado</h2>
+    <p class="section-intro">Cruzando as 5 tarefas macro do rascunho de e-mail gerado automaticamente no final da reunião (ainda não enviado; todas com "Prazo: a definir") com os subpontos reais discutidos em reunião.</p>
+
+    <div class="task-group">
+      <h3>Tarefa 1 — Iconografia, alinhamento de cartões, diversidade, botões e progressão <span class="task-owner">· Responsável: João Fins</span></h3>
+      <table>
+        <thead><tr><th>Subtarefa</th><th>Complexidade</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td class="subtask">Trocar ícones pontuais (ex. "polícia")</td><td><span class="status low">Baixa</span></td><td>Troca direta, falta escolher o ícone</td></tr>
+          <tr><td class="subtask">Regra de proporção visual entre ícones vizinhos</td><td><span class="status medium">Média</span></td><td>Requer curadoria manual, não é 1x1</td></tr>
+          <tr><td class="subtask">Reorganizar bloco "big numbers"</td><td><span class="status medium">Média</span></td><td>Reverter/ajustar layout já feito antes</td></tr>
+          <tr><td class="subtask">Ícones vs. imagens (DUDH / Transparência / Descubra Mais)</td><td><span class="status high">Alta</span></td><td>Direção de design ainda por escolher</td></tr>
+          <tr><td class="subtask">Diversidade nas imagens (3 homens recortados)</td><td><span class="status low">Baixa</span></td><td>Troca de imagens; depende de banco de imagens do cliente</td></tr>
+          <tr><td class="subtask">Alinhamento de altura dos cards pela regra "maior altura"</td><td><span class="status medium">Média</span></td><td>Regra definida, falta aplicar de forma transversal</td></tr>
+          <tr><td class="subtask"><strong>Resolver a "progressão dos cartões"</strong> (petição)</td><td><span class="status high">Alta</span></td><td><strong>Sem solução fechada</strong> — ponto mais crítico do plano</td></tr>
+          <tr><td class="subtask">Ilusão ótica do botão amarelo sobre fundo branco</td><td><span class="status medium">Média</span></td><td>Precisa de decisão de contraste</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="task-group">
+      <h3>Tarefa 2 — Paleta de cores para tags e acessibilidade <span class="task-owner">· Responsável: João Fins e Paulo Tavares</span></h3>
+      <table>
+        <thead><tr><th>Subtarefa</th><th>Complexidade</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td class="subtask">Validar contraste da tag branca sobre fundo</td><td><span class="status medium">Média</span></td><td>Depende de troca entre João e Paulo sobre a paleta enviada</td></tr>
+          <tr><td class="subtask">Consolidar guia de cores acessíveis</td><td><span class="status medium">Média</span></td><td>Curadoria com regras claras de contraste (WCAG)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="task-group">
+      <h3>Tarefa 3 — Limitar caracteres, rever datas, padronizar CTAs, redesenhar calendário <span class="task-owner">· Responsável: Equipa Loba</span></h3>
+      <div class="callout warn" style="margin-bottom:14px;"><p style="margin:0;">⚠️ Ver contradições assinaladas no início do documento antes de fechar esta tarefa como está descrita no rascunho de e-mail — e antes de o enviar ao cliente.</p></div>
+      <table>
+        <thead><tr><th>Subtarefa</th><th>Complexidade</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td class="subtask">Indicador/aviso de nº de caracteres no título</td><td><span class="status medium">Média</span></td><td>Solução ainda por desenhar; tem de funcionar em responsive</td></tr>
+          <tr><td class="subtask"><strong>Manter</strong> a data nas notícias (não remover)</td><td><span class="status low">Baixa</span></td><td>Decisão já fechada; falta corrigir o e-mail e/ou aplicar no design</td></tr>
+          <tr><td class="subtask">Corrigir redundância de copy "Atualidade"</td><td><span class="status low">Baixa</span></td><td>Ajuste direto de copy</td></tr>
+          <tr><td class="subtask">Mudar texto do botão "Ver história"</td><td><span class="status low">Baixa</span></td><td>Ajuste direto de copy</td></tr>
+          <tr><td class="subtask">Decisão de peso visual do CTA "Ler" nas notícias</td><td><span class="status high">Alta</span></td><td>Decisão estratégica pendente</td></tr>
+          <tr><td class="subtask">Padronizar nomenclatura de CTAs</td><td><span class="status medium">Média</span></td><td>Regra definida, falta rever todos os CTAs do protótipo</td></tr>
+          <tr><td class="subtask">Redesenhar bloco de eventos/calendário</td><td><span class="status high">Alta</span></td><td><strong>Sem solução escolhida</strong> — precisa de novo brainstorm</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="task-group">
+      <h3>Tarefa 4 — Otimizar imagens (vetoriais) e enviar feedback/versão atualizada <span class="task-owner">· Responsável: Rui Conceição e João Fins</span></h3>
+      <table>
+        <thead><tr><th>Subtarefa</th><th>Complexidade</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td class="subtask">Avaliar viabilidade de imagens SVG editáveis em backoffice</td><td><span class="status medium">Média</span></td><td>Depende de confirmação da equipa de programação/backoffice</td></tr>
+          <tr><td class="subtask">Trocar imagem "pessoas em movimento"</td><td><span class="status low">Baixa</span></td><td>Troca direta</td></tr>
+          <tr><td class="subtask">Preparar e enviar nova versão do design</td><td><span class="status medium">Média</span></td><td>Depende da disponibilidade do João Fins antes das férias</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="task-group">
+      <h3>Tarefa 5 — Definir exibição de eventos e analisar conteúdos para próximas páginas <span class="task-owner">· Responsável: Pedro Gama, João Fins e Rui Conceição</span></h3>
+      <table>
+        <thead><tr><th>Subtarefa</th><th>Complexidade</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td class="subtask">Nova solução gráfica para o bloco de eventos</td><td><span class="status high">Alta</span></td><td>Mesmo ponto da tarefa 3 — exploração de design</td></tr>
+          <tr><td class="subtask">Página "Projetos" — reaproveitar blocos ou criar nova página</td><td><span class="status medium">Média</span></td><td>Decisão de arquitetura de informação pendente</td></tr>
+          <tr><td class="subtask">Levantamento migração vs. revisão de conteúdos</td><td><span class="status medium">Média</span></td><td>Trabalho de análise/Excel, sem dependências de design</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout note">
+      <h4>Pontos em standby</h4>
+      <p>Integração com Salesforce e formulários da área reservada — dependem de decisão interna da Amnistia sobre requisitos por departamento; não devem entrar na estimativa desta fase.</p>
+    </div>
+  </section>
+
+  <section id="recomendacao">
+    <h2>Recomendação prática</h2>
+    <ol>
+      <li><strong>Corrigir o rascunho de e-mail antes de o enviar</strong> quanto à data das notícias (manter, não remover) e clarificar que o "limitador de caracteres" ainda está em aberto.</li>
+      <li>Tratar os itens 🔴 (progressão dos cards de petição, bloco de eventos, ícones vs. imagens, peso visual do CTA "Ler") como <strong>blocos de exploração de design</strong>, com tempo de prototipagem e validação interna antes de voltar ao cliente.</li>
+      <li>Os itens 🟢 podem entrar já na próxima entrega sem necessidade de mais validação.</li>
+    </ol>
+  </section>
+
+</main>
+</div>
+
+<footer class="doc-footer">
+  Documento preparado a partir da transcrição da reunião de 15 de julho de 2026, complementado com o resumo automático em PDF e o rascunho de e-mail de resumo/plano de ação gerado automaticamente no final da reunião (ainda não enviado ao cliente), para apoio à estimativa de esforço da próxima iteração.
+</footer>
+
+<script>
+  // Realça o item ativo do índice conforme o scroll
+  const sections = document.querySelectorAll('main.content section[id]');
+  const links = document.querySelectorAll('nav.toc a');
+  const map = new Map();
+  links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = map.get(entry.target.id);
+      if(!link) return;
+      if(entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
